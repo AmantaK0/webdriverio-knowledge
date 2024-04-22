@@ -1,0 +1,34 @@
+{
+    "sessionId": "ef0de90202d108962d111650b6e473aa",
+    "capabilities": {
+        "acceptInsecureCerts": false,
+        "browserName": "chrome",
+        "browserVersion": "123.0.6312.59",
+        "chrome": {
+            "chromedriverVersion": "123.0.6312.86 (9b72c47a053648d405376c5cf07999ed626728da-refs/branch-heads/6312@{#698})",
+            "userDataDir": "C:\\Users\\akosova\\AppData\\Local\\Temp\\scoped_dir61668_353545728"
+        },
+        "fedcm:accounts": true,
+        "goog:chromeOptions": {
+            "debuggerAddress": "localhost:59482"
+        },
+        "networkConnectionEnabled": false,
+        "pageLoadStrategy": "normal",
+        "platformName": "windows",
+        "proxy": {},
+        "setWindowRect": true,
+        "strictFileInteractability": false,
+        "timeouts": {
+            "implicit": 0,
+            "pageLoad": 300000,
+            "script": 30000
+        },
+        "unhandledPromptBehavior": "dismiss and notify",
+        "webauthn:extension:credBlob": true,
+        "webauthn:extension:largeBlob": true,
+        "webauthn:extension:minPinLength": true,
+        "webauthn:extension:prf": true,
+        "webauthn:virtualAuthenticators": true,
+        "wdio:driverPID": 61668
+    }
+}

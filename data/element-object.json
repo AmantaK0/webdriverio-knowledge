@@ -1,0 +1,42 @@
+{
+    "sessionId": "d592fa180f31ec81a75d5b8c1477cbd3",
+    "elementId": "f.C7EA9CA83BEFA5471454FF33D780A970.d.63F33214A58AE1C30B4D4530C795EAC1.e.16",
+    "element-6066-11e4-a52e-4f735466cecf": "f.C7EA9CA83BEFA5471454FF33D780A970.d.63F33214A58AE1C30B4D4530C795EAC1.e.16",
+    "selector": "#contact_reply > h1",
+    "parent": {
+        "sessionId": "d592fa180f31ec81a75d5b8c1477cbd3",
+        "capabilities": {
+            "acceptInsecureCerts": false,
+            "browserName": "chrome",
+            "browserVersion": "123.0.6312.86",
+            "chrome": {
+                "chromedriverVersion": "123.0.6312.86 (9b72c47a053648d405376c5cf07999ed626728da-refs/branch-heads/6312@{#698})",
+                "userDataDir": "C:\\Users\\akosova\\AppData\\Local\\Temp\\scoped_dir24324_1516879338"
+            },
+            "fedcm:accounts": true,
+            "goog:chromeOptions": {
+                "debuggerAddress": "localhost:54630"
+            },
+            "networkConnectionEnabled": false,
+            "pageLoadStrategy": "normal",
+            "platformName": "windows",
+            "proxy": {},
+            "setWindowRect": true,
+            "strictFileInteractability": false,
+            "timeouts": {
+                "implicit": 0,
+                "pageLoad": 300000,
+                "script": 30000
+            },
+            "unhandledPromptBehavior": "dismiss and notify",
+            "webauthn:extension:credBlob": true,
+            "webauthn:extension:largeBlob": true,
+            "webauthn:extension:minPinLength": true,
+            "webauthn:extension:prf": true,
+            "webauthn:virtualAuthenticators": true,
+            "wdio:driverPID": 24324
+        }
+    },
+    "isReactElement": false,
+    "isShadowElement": false
+}
