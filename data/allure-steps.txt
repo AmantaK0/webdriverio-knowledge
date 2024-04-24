@@ -1,0 +1,76 @@
+# PRE-REQUISITE -> JAVA 8 or higher
+
+# installation and configuration
+npm install -g allure-commandline --save-dev 
+
+# in wdio.conf.js add:
+export const config = {
+    reporters: ['spec', 
+    ['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
+}
+
+# generate allure results in alure-results folder
+npx allure generate allure-results
+
+# open results
+npx allure open
+
+# to delete the current results and generate new ones (or better yet, delete it manually)
+npx allure generate --clean allure-results
+
+# take screenshots
+# in wdio.conf.js add this:
+afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if(error) {
+            await browser.takeScreenshot()
+        }
+},
+
+# then commands to generate results and open them (npx allure generate allure-results and npx allure open)
+
+# autogenerate allure reports:
+# install
+npm i allure-commandline
+
+# in wdio.conf.js add in the top
+const allure = require('allure-commandline')
+import fs from "fs"
+
+# then in export.config 
+onComplete: function(exitCode, config, capabilities, results) {
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', 'allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function(exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+},
+
+# in the onPrepare function in wdio.conf.js 
+onPrepare: function (config, capabilities) {
+        if(fs.existsSync("./allure-results")){
+            fs.rmSync("./allure-results", {recursive: true})
+        }
+},
+
+# to use allure reporter in spec files
+# add on top:
+import allureReporter from "@wdio/allure-reporter"
+
+# check file contact-us.spec.js for commented examples using allure reporter API from https://webdriver.io/docs/allure-reporter/#supported-allure-api

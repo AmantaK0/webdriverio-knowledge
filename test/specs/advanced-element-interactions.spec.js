@@ -104,10 +104,10 @@ describe('advanced element interactions - examples', () =>{
         await browser.url('/IFrame/index.html')
         const iframe = await $("#frame")
         // await browser.switchToFrame(iframe)
-        await browser.pause(3000)
+        // await browser.pause(3000)
         await $("//a[text()='Our Products']").click()
         await browser.switchToParentFrame()
-        await browser.pause(3000)
+        // await browser.pause(3000)
     })
     it('alerts', async()=>{
         await browser.url('/Popup-Alerts/index.html')
@@ -120,22 +120,22 @@ describe('advanced element interactions - examples', () =>{
 
         await browser.acceptAlert()
         await expect($('#confirm-alert-text')).toHaveText('You pressed OK!')
-        await browser.pause(2000)
+        // await browser.pause(2000)
 
         await $('#button4').click()
         await browser.dismissAlert()
         await expect($('#confirm-alert-text')).toHaveText('You pressed Cancel!')
-        await browser.pause(2000)
+        // await browser.pause(2000)
 
     })
     it('file upload', async()=>{
         await browser.url('/File-Upload/index.html')
         await $('#myFile').addValue(`${process.cwd()}\\data\\dummy_file.txt`)
-        await browser.pause(2000)
+        // await browser.pause(2000)
         await $('#submit-button').click()
-        await browser.pause(2000)
+        // await browser.pause(2000)
     })
-    it.only('js execute', async()=>{
+    it('js execute', async()=>{
         await browser.url('/Hidden-Elements/index.html')
         await browser.execute(() => {
             return document.getElementById("not-displayed").setAttribute("id", "")
@@ -143,6 +143,6 @@ describe('advanced element interactions - examples', () =>{
         await browser.execute(() => {
             return document.body.style.backgroundColor = "tomato"
         })
-        await browser.pause(3000)
+        // await browser.pause(3000)
     })
 })

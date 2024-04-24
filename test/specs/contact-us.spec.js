@@ -1,3 +1,4 @@
+// import allureReporter from "@wdio/allure-reporter"
 describe('webdriveruniversity - contact us page', () => {
     beforeEach(async() => {
         await browser.maximizeWindow()
@@ -5,6 +6,9 @@ describe('webdriveruniversity - contact us page', () => {
         console.log(`>>Browser Object: +${JSON.stringify(browser)}`)
     })
     it('valid submition - submit all information', async() => {
+        // allureReporter.addFeature("Contact-us page - valid submission")
+        // allureReporter.addDescription("Validate contact us page by submitting all data")
+        // allureReporter.addSeverity("critical")
         const firstName = await $('//*[@name="first_name"]')
         const lastName = await $('//*[@name="last_name"]')
         const emailAddress = await $('//*[@name="email"]')
@@ -40,6 +44,6 @@ describe('webdriveruniversity - contact us page', () => {
         await submitButton.click()
 
         const errorMessage = $('body')
-        await expect(errorMessage).toHaveTextContaining(['Error: all fields are required','Error: Invalid email address'])
+        await expect(errorMessage).toHaveText(['Error: all fields are required','Error: Invalid email address'])
     })
 })
