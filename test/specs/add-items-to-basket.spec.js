@@ -42,6 +42,22 @@ describe('add items to basket', () => {
             formattedItemPrices.forEach((price) => itemsTotal += parseFloat(price))
             console.log("TOTAL ================= " + itemsTotal)
         }
+
+        await $("//span[text()='Cart']").click()
+        // await expect(browser).toHaveUrlContaining('checkout')
+        await expect(browser).toHaveUrl(expect.stringContaining('checkout'))
+
+        // //span[text()='Flat Shipping Rate:']/../following-sibling::td
+        var tempShippingRate = await $("//span[text()='Flat Shipping Rate:']/../following-sibling::td").getText()
+        var shippingRate = tempShippingRate.replace('$', '')
+        itemsTotal = itemsTotal + parseFloat(shippingRate)
+        console.log("TOTAL AFTER SHIPPING ========================= " + itemsTotal)
+
+        // extract cart total
+        // /.. one level up in the dom ; following-sibling is next (td for example or div)
+        var cartTotal = await $("//span[text()='Total:']/../following-sibling::td").getText()
+        cartTotal = cartTotal.replace('$', '')
+        expect(itemsTotal).toEqual(parseFloat(cartTotal)) // jest assertion, no need for await
         await browser.pause(5000)
     })
 })
